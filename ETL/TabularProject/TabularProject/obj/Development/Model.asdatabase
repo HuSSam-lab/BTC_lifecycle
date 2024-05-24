@@ -1,0 +1,551 @@
+{
+  "name": "TabularProject",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/DESKTOP-B4G45V0\\MSSQLSERVER01;Staging BTC",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "DESKTOP-B4G45V0\\MSSQLSERVER01",
+            "database": "Staging BTC"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "kind": "SQL",
+          "path": "desktop-b4g45v0\\mssqlserver01;Staging BTC",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Backup_real_time_prices",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "BTC high",
+            "dataType": "double",
+            "sourceColumn": "BTC high"
+          },
+          {
+            "name": "ADA high",
+            "dataType": "double",
+            "sourceColumn": "ADA high"
+          },
+          {
+            "name": "BNB high",
+            "dataType": "double",
+            "sourceColumn": "BNB high"
+          },
+          {
+            "name": "ETH high",
+            "dataType": "double",
+            "sourceColumn": "ETH high"
+          },
+          {
+            "name": "SOL high",
+            "dataType": "double",
+            "sourceColumn": "SOL high"
+          },
+          {
+            "name": "XRP high",
+            "dataType": "double",
+            "sourceColumn": "XRP high"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-B4G45V0\\MSSQLSERVER01;Staging BTC\",",
+                "    dbo_Backup_real_time_prices = Source{[Schema=\"dbo\",Item=\"Backup_real_time_prices\"]}[Data]",
+                "in",
+                "    dbo_Backup_real_time_prices"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "BTC_price_avg",
+            "expression": "AVERAGE(Backup_real_time_prices[BTC high])"
+          },
+          {
+            "name": "ADA_price_average",
+            "expression": "AVERAGE('Backup_real_time_prices'[ADA high])"
+          },
+          {
+            "name": "BNB_price_average",
+            "expression": " AVERAGE('Backup_real_time_prices'[BNB high])"
+          },
+          {
+            "name": "ETH_price_average",
+            "expression": " AVERAGE('Backup_real_time_prices'[ETH high])"
+          },
+          {
+            "name": "SOL_price_average",
+            "expression": "AVERAGE('Backup_real_time_prices'[SOL high])"
+          },
+          {
+            "name": "XRP_price_average",
+            "expression": " AVERAGE('Backup_real_time_prices'[XRP high])"
+          }
+        ]
+      },
+      {
+        "name": "extended_google_trend",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date"
+          },
+          {
+            "name": "worldwide",
+            "dataType": "double",
+            "sourceColumn": "worldwide"
+          },
+          {
+            "name": "unitedstates",
+            "dataType": "double",
+            "sourceColumn": "unitedstates"
+          },
+          {
+            "name": "Germany",
+            "dataType": "double",
+            "sourceColumn": "Germany"
+          },
+          {
+            "name": "UAE",
+            "dataType": "double",
+            "sourceColumn": "UAE"
+          },
+          {
+            "name": "Dubai",
+            "dataType": "double",
+            "sourceColumn": "Dubai"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-B4G45V0\\MSSQLSERVER01;Staging BTC\",",
+                "    dbo_extended_google_trend = Source{[Schema=\"dbo\",Item=\"extended_google_trend\"]}[Data]",
+                "in",
+                "    dbo_extended_google_trend"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Raw",
+        "columns": [
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id"
+          },
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date"
+          },
+          {
+            "name": "BTC high",
+            "dataType": "double",
+            "sourceColumn": "BTC high"
+          },
+          {
+            "name": "ADA high",
+            "dataType": "double",
+            "sourceColumn": "ADA high"
+          },
+          {
+            "name": "BNB high",
+            "dataType": "double",
+            "sourceColumn": "BNB high"
+          },
+          {
+            "name": "SOL high",
+            "dataType": "double",
+            "sourceColumn": "SOL high"
+          },
+          {
+            "name": "XRP high",
+            "dataType": "double",
+            "sourceColumn": "XRP high"
+          },
+          {
+            "name": "ETH high",
+            "dataType": "double",
+            "sourceColumn": "ETH high"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-B4G45V0\\MSSQLSERVER01;Staging BTC\",",
+                "    dbo_Raw = Source{[Schema=\"dbo\",Item=\"Raw\"]}[Data]",
+                "in",
+                "    dbo_Raw"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Average_BTC_price",
+            "expression": "AVERAGE('Raw'[BTC high])"
+          },
+          {
+            "name": "average_ADA_price",
+            "expression": " AVERAGE('Raw'[ADA high])"
+          },
+          {
+            "name": "average_BNB_price",
+            "expression": " AVERAGE('Raw'[BNB high])"
+          },
+          {
+            "name": "average_SOL_price",
+            "expression": "AVERAGE('Raw'[SOL high])"
+          },
+          {
+            "name": "average_XRP_price",
+            "expression": "AVERAGE('Raw'[XRP high])"
+          },
+          {
+            "name": "average_ETH_price",
+            "expression": "AVERAGE('Raw'[ETH high])"
+          },
+          {
+            "name": "log_BTC",
+            "expression": " LOG([Average_BTC_price])"
+          },
+          {
+            "name": "Count_prices",
+            "expression": " COUNT(Raw[date])"
+          },
+          {
+            "name": "log_ADA",
+            "expression": " LOG([average_ADA_price])"
+          },
+          {
+            "name": "log_BNB",
+            "expression": " LOG('Raw'[average_BNB_price])"
+          },
+          {
+            "name": "log_SOL",
+            "expression": "LOG('Raw'[average_SOL_price])"
+          },
+          {
+            "name": "log_XRP",
+            "expression": "LOG('Raw'[average_XRP_price])"
+          },
+          {
+            "name": "log_ETH",
+            "expression": "LOG('Raw'[average_ETH_price])"
+          }
+        ]
+      },
+      {
+        "name": "Google Trend Staging DB",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date"
+          },
+          {
+            "name": "worldwide",
+            "dataType": "double",
+            "sourceColumn": "worldwide"
+          },
+          {
+            "name": "unitedstates",
+            "dataType": "double",
+            "sourceColumn": "unitedstates"
+          },
+          {
+            "name": "Germany",
+            "dataType": "double",
+            "sourceColumn": "Germany"
+          },
+          {
+            "name": "UAE",
+            "dataType": "double",
+            "sourceColumn": "UAE"
+          },
+          {
+            "name": "Dubai",
+            "dataType": "double",
+            "sourceColumn": "Dubai"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-B4G45V0\\MSSQLSERVER01;Staging BTC\",",
+                "    #\"dbo_Google Trend Staging DB\" = Source{[Schema=\"dbo\",Item=\"Google Trend Staging DB\"]}[Data]",
+                "in",
+                "    #\"dbo_Google Trend Staging DB\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "count_WW",
+            "expression": " SUM('Google Trend Staging DB'[worldwide])"
+          },
+          {
+            "name": "count_US",
+            "expression": "SUM('Google Trend Staging DB'[unitedstates])"
+          },
+          {
+            "name": "count_GR",
+            "expression": " SUM('Google Trend Staging DB'[Germany])"
+          },
+          {
+            "name": "count_UAE",
+            "expression": "SUM('Google Trend Staging DB'[UAE])"
+          },
+          {
+            "name": "count_Dubai",
+            "expression": " SUM('Google Trend Staging DB'[Dubai])"
+          }
+        ]
+      },
+      {
+        "name": "Twitter staging DB",
+        "columns": [
+          {
+            "name": "id",
+            "dataType": "double",
+            "sourceColumn": "id"
+          },
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date"
+          },
+          {
+            "name": "hashtags",
+            "dataType": "string",
+            "sourceColumn": "hashtags"
+          },
+          {
+            "name": "user_verified",
+            "dataType": "double",
+            "sourceColumn": "user_verified"
+          },
+          {
+            "name": "is_retweet",
+            "dataType": "double",
+            "sourceColumn": "is_retweet"
+          },
+          {
+            "name": "Is_old_User",
+            "dataType": "double",
+            "sourceColumn": "Is_old_User"
+          },
+          {
+            "name": "user_important",
+            "dataType": "double",
+            "sourceColumn": "user_important"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-B4G45V0\\MSSQLSERVER01;Staging BTC\",",
+                "    #\"dbo_Twitter staging DB\" = Source{[Schema=\"dbo\",Item=\"Twitter staging DB\"]}[Data]",
+                "in",
+                "    #\"dbo_Twitter staging DB\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "sum_user_varified",
+            "expression": " sum('Twitter staging DB'[user_verified])"
+          },
+          {
+            "name": "sum_is_retweet",
+            "expression": " SUM('Twitter staging DB'[is_retweet])"
+          },
+          {
+            "name": "sum_is_oldUser",
+            "expression": "SUM('Twitter staging DB'[Is_old_User])"
+          },
+          {
+            "name": "sum_imoprtant",
+            "expression": " SUM('Twitter_analyzied'[sum_UserImportant])"
+          },
+          {
+            "name": "NO.Commetns",
+            "expression": " COUNT('Twitter staging DB'[hashtags])"
+          }
+        ]
+      },
+      {
+        "name": "Twitter_analyzied",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date"
+          },
+          {
+            "name": "sum_UserVerified",
+            "dataType": "double",
+            "sourceColumn": "sum_UserVerified"
+          },
+          {
+            "name": "sum_IsRetweet",
+            "dataType": "double",
+            "sourceColumn": "sum_IsRetweet"
+          },
+          {
+            "name": "sum_IsOldUser",
+            "dataType": "double",
+            "sourceColumn": "sum_IsOldUser"
+          },
+          {
+            "name": "sum_UserImportant",
+            "dataType": "double",
+            "sourceColumn": "sum_UserImportant"
+          },
+          {
+            "name": "count",
+            "dataType": "double",
+            "sourceColumn": "count"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-B4G45V0\\MSSQLSERVER01;Staging BTC\",",
+                "    dbo_Twitter_analyzied = Source{[Schema=\"dbo\",Item=\"Twitter_analyzied\"]}[Data]",
+                "in",
+                "    dbo_Twitter_analyzied"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "9bebe0e7-3d9a-4144-a392-17099283a080",
+        "fromCardinality": "one",
+        "fromTable": "Google Trend Staging DB",
+        "fromColumn": "date",
+        "toTable": "extended_google_trend",
+        "toColumn": "date",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "edd54ba0-f227-4de3-be72-01c4050699df",
+        "fromCardinality": "one",
+        "fromTable": "extended_google_trend",
+        "fromColumn": "date",
+        "toTable": "Raw",
+        "toColumn": "date",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "9597dc3b-b273-49d1-92e4-7195019c9e97",
+        "fromCardinality": "one",
+        "fromTable": "Backup_real_time_prices",
+        "fromColumn": "Date",
+        "toTable": "Raw",
+        "toColumn": "date",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "b79db589-5441-4ef5-b625-e6fe4c02d5f0",
+        "fromCardinality": "one",
+        "fromTable": "Twitter_analyzied",
+        "fromColumn": "date",
+        "toTable": "Raw",
+        "toColumn": "date",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "b31a624d-ae6a-46c3-8f8d-9b97cd389acb",
+        "fromCardinality": "one",
+        "fromTable": "Twitter_analyzied",
+        "fromColumn": "date",
+        "toTable": "Backup_real_time_prices",
+        "toColumn": "Date",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "27cb3a6e-83e1-47e4-ac6a-1862ceb61afd",
+        "fromTable": "Twitter staging DB",
+        "fromColumn": "date",
+        "toTable": "Twitter_analyzied",
+        "toColumn": "date"
+      },
+      {
+        "name": "3f5a4793-1491-495e-af95-3942a6072caf",
+        "fromCardinality": "one",
+        "fromTable": "Google Trend Staging DB",
+        "fromColumn": "date",
+        "toTable": "Twitter_analyzied",
+        "toColumn": "date",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  }
+}

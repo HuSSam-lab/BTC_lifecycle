@@ -1,8 +1,0 @@
-F:\Prjoects\BTC\04 US daily stock market prediction\ETL\TabularProject\TabularProject\bin\Model.asdatabase
-F:\Prjoects\BTC\04 US daily stock market prediction\ETL\TabularProject\TabularProject\bin\Model.deploymenttargets
-F:\Prjoects\BTC\04 US daily stock market prediction\ETL\TabularProject\TabularProject\bin\Model.deploymentoptions
-F:\Prjoects\BTC\04 US daily stock market prediction\ETL\TabularProject\TabularProject\obj\Development\TabularProject.smproj.AssemblyReference.cache
-F:\Prjoects\BTC\04 US daily stock market prediction\ETL\TabularProject\TabularProject\obj\Development\TabularProject.smproj.CoreCompileInputs.cache
-F:\Prjoects\BTC\04 US daily stock market prediction\ETL\TabularProject\TabularProject\obj\Development\Model.asdatabase
-F:\Prjoects\BTC\04 US daily stock market prediction\ETL\TabularProject\TabularProject\obj\Development\Model.deploymentoptions
-F:\Prjoects\BTC\04 US daily stock market prediction\ETL\TabularProject\TabularProject\obj\Development\Model.deploymenttargets

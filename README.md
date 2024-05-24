@@ -23,23 +23,22 @@ What I will need to Collect:
 * Daily BTC and other 49 cryptocurrency prices to store it in separated DB for the future.
 
 
-ETL architecture (Data flow)
+# ETL architecture (Data flow)
 ![image](https://github.com/HuSSam-lab/BTC_lifecycle/assets/73494744/16941df8-0b59-4aa5-8900-f710764415b4)
 
-ERD
+# ERD
 ![image](https://github.com/HuSSam-lab/BTC_lifecycle/assets/73494744/e2076746-b6f9-42ee-a9d0-3bd275ac20bb)
 
-ETL pipeline package
+# ETL pipeline package
 ![image](https://github.com/HuSSam-lab/BTC_lifecycle/assets/73494744/89e07ff8-cbd9-4feb-85cd-72617c1a98c3)
 
-Staging Data Flow
+# Staging Data Flow
 ![image](https://github.com/HuSSam-lab/BTC_lifecycle/assets/73494744/cf56a7e8-3240-4db1-953a-14337258975f)
 
-Getting new prices and appending it
-See {What “No” mean} very helpful -_-
+# Getting new prices and appending it See {What “No” mean} very helpful -_-
 ![image](https://github.com/HuSSam-lab/BTC_lifecycle/assets/73494744/d8b5d32d-728e-4900-a260-7c82074a6b59)
 
-Storing historical and new data
+# Storing historical and new data
 ![image](https://github.com/HuSSam-lab/BTC_lifecycle/assets/73494744/46e63ce4-b336-4623-a697-42b5694544a6)
 
 BTC and other cryptocurrency
@@ -76,7 +75,7 @@ SQL:
      4. Storing new historical prices.
      5. Twitter staging.
 
-Data Warehouse
+# Data Warehouse
 ![image](https://github.com/HuSSam-lab/BTC_lifecycle/assets/73494744/dd49764c-8dcd-40aa-849e-4ee55d0fe3cc)
 
 
@@ -91,7 +90,7 @@ The Twitter data base was good but use full for short time it was just for {2021
 * Training the model will start automatically with SSIS package, but predicting price need run script.
 
 
-Test and prediction
+# Test and prediction
 ![image](https://github.com/HuSSam-lab/BTC_lifecycle/assets/73494744/51e225b3-46c0-41fb-aa99-9e55202fa1f1)
 
 
